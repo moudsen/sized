@@ -13,7 +13,7 @@ Once compiled copy "sized" to /usr/local/sbin and install/use the service (note:
 - Status with "sized status"
 - Uninstall with "sized uninstall"
 The daemon listens on port 7007 for http GET requests:
-- http://127.0.0.1/size?dir=<dir>
+- http://127.0.0.1/size?dir=(directory)
 # Command line client dirsizeclient.go
 Once compiled, copy to /usr/local/bin and use:
   - "dirsizeclient <dir>"
@@ -25,7 +25,7 @@ _Daemon Logging consideration ("/var/log/sized.log")_
   
 _Zabbix Agent configuration_
 - /etc/zabbix/zabbix_agent.d/dirsize.conf: "UserParameter=dirsize.size[*], /usr/local/bin/dirsizeclient $1"
-- Add an item in Zabbix to the concerning host, key: "dirsize.size(<directory>)", suggest to set to 15m updates
+- Add an item in Zabbix to the concerning host, key: "dirsize.size(directory)", suggest to set to 15m updates
 - Add a graph to the same host (set name and "add" the item)
 # Experiences so far
 Very fast and simple (even with large number of files works perfectly in seconds!) for my own use cases, but happy to learn from your experiences!
