@@ -19,13 +19,12 @@ Once compiled, copy to /usr/local/bin and use:
   - "dirsizeclient <dir>"
 Obviously the daemon must be running for this command to work.
 # Configuration
-Under construction
-- Daemon Logging consideration ("/var/log/sized.log")
-  -- The sized daemon logs to syslog. In case of rsyslogd you can log the messages to a specific file
-  -- /etc/rsyslog.d/sized.conf: ":programname, isequal, "sized" /var/log/sized.log"
-- Zabbix Agent configuration
-  -- /etc/zabbix/zabbix_agent.d/dirsize.conf: "UserParameter=dirsize.size[*], /usr/local/bin/dirsizeclient $1"
-  -- Add an item in Zabbix to the concerning host, key: "dirsize.size(<directory>)", suggest to set to 15m updates
-  -- Add a graph to the same host (set name and "add" the item)
+_Daemon Logging consideration ("/var/log/sized.log")_
+- The sized daemon logs daemon operations and sizing requests to syslog (including timing). In case of rsyslogd you can log the messages to a specific file
+- /etc/rsyslog.d/sized.conf: ":programname, isequal, "sized" /var/log/sized.log"
+_Zabbix Agent configuration_
+- /etc/zabbix/zabbix_agent.d/dirsize.conf: "UserParameter=dirsize.size[*], /usr/local/bin/dirsizeclient $1"
+- Add an item in Zabbix to the concerning host, key: "dirsize.size(<directory>)", suggest to set to 15m updates
+- Add a graph to the same host (set name and "add" the item)
 # Experiences so far
 Very fast and simple (even with large number of files works perfectly in seconds!) for my own use cases, but happy to learn from your experiences!
