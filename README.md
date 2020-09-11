@@ -29,3 +29,12 @@ _Zabbix Agent configuration_
 - Add a graph to the same host (set name and "add" the item)
 # Experiences so far
 Very fast and simple (even with large number of files works perfectly in seconds!) for my own use cases, but happy to learn from your experiences!
+# Future ideas/extensions
+I'm currently writing a lot of Go routines to handle/analyze database, mail, security and now more system related information that end up providing information for systems like Zabbix and Grafana. I'm considering to create a single (but extendable) daemon in Go (routines) with an associated library of functions that will be able to handle and store all these systems information processing and analysis instead of introducing many individual daemons (including automatic configuration where possible).
+- Mail Log Processor (Dovecot, Postfix) including "jail processor" (very detailed mail reporting and analysis facility; not released to public yet)
+- Log display/filtering - non-root accessible (Logdaemon, see https://github.com/moudsen/logdaemon)
+- Backup analysis and reporting (Hashbackup, Backblaze buckets)
+- Information parser from e-mail messages (i.e. Service invoices)
+- Sizing information - non-root accessible (MariaDB, Directories, vMail, Logs, etc)
+- Traceroute analysis
+- Slack (and others) integration
