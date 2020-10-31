@@ -25,7 +25,8 @@ _Daemon Logging consideration ("/var/log/sized.log")_
   
 _Zabbix Agent configuration_
 - /etc/zabbix/zabbix_agent.d/dirsize.conf: "UserParameter=dirsize.size[*], /usr/local/bin/dirsizeclient $1"
-- Add an item in Zabbix to the concerning host, key: "dirsize.size(directory)", suggest to set to 15m updates
+- /etc/zabbix/zabbix_agent.d/dircount.conf: "UserParameter=dircount.size[*], /usr/local/bin/dircountclient $1"
+- Add an item in Zabbix to the concerning host, key: "dirsize.size(directory)" or "dirsize.count(directory)", suggest to set to 15m updates for balanced system load
 - Add a graph to the same host (set name and "add" the item)
 # Experiences so far
 Very fast and simple (even with large number of files works perfectly in seconds!) for my own use cases, but happy to learn from your experiences!
