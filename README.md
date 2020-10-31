@@ -27,9 +27,12 @@ _Zabbix Agent configuration_
 - /etc/zabbix/zabbix_agent.d/dirsize.conf: "UserParameter=dirsize.size[*], /usr/local/bin/dirsizeclient $1"
 - /etc/zabbix/zabbix_agent.d/dircount.conf: "UserParameter=dircount.size[*], /usr/local/bin/dircountclient $1"
 - Add an item in Zabbix to the concerning host, key: "dirsize.size(directory)" or "dirsize.count(directory)", suggest to set to 15m updates for balanced system load
-- Add a graph to the same host (set name and "add" the item)
+- Add a graph to the same host (set name and "add" the items size(left) and count (right))
 # Experiences so far
 Very fast and simple (even with large number of files works perfectly in seconds!) for my own use cases, but happy to learn from your experiences!
+# Todo
+- Combine into single Zabbix configuration file
+- Use MACRO or otherwise to set folder and create Template for usage across systems (instead of individual items per folder currently)
 # Future ideas/extensions
 I'm currently writing a lot of Go routines to handle/analyze database, mail, security and now more system related information that end up providing information for systems like Zabbix and Grafana. I'm considering to create a single (but extendable) daemon in Go (routines) with an associated library of functions that will be able to handle and store all these systems information processing and analysis instead of introducing many individual daemons (including automatic configuration where possible).
 - Mail Log Processor (Dovecot, Postfix) including "jail processor" (very detailed mail reporting and analysis facility; not released to public yet)
